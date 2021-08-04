@@ -7,9 +7,6 @@ let deleteCalled = false;
 function toggleExpand(e) {
   let deleteIcons = [...document.querySelectorAll('.task__remove')];
   const formElements = [...this.querySelectorAll('form *'),...deleteIcons];
-  console.log(`deleteIcons`, deleteIcons)
-  console.log(`formElements`, formElements)
-  console.log(`e.target`, e.target)
   if (formElements.includes(e.target)) return;
   if (deleteCalled) {
     deleteCalled = false;
@@ -43,15 +40,12 @@ dayPanels.forEach(day => day.addEventListener('transitionend',toggleTasks));
 function deleteTask(e) {
   const dataDay = e.target.getAttribute('data-day');
   const dataIndex = e.target.getAttribute('data-index');
-  console.log(dailyTasks);
   dailyTasks[dataDay] = dailyTasks[dataDay].filter((task,i) => i !== Number(dataIndex))
-  console.log(dailyTasks);
   deleteCalled = true;
   loadTasks()
 }
 
 function loadTasks() {
-  console.log('I ran');
   for (const key in dailyTasks) {
     const taskContainer = document.querySelector(`.day__${key} ul`)
     while (taskContainer.lastElementChild) {
@@ -92,7 +86,6 @@ function submitTasks(e) {
   const formProps = Object.fromEntries(formData);
   dailyTasks[taskDay].push(formProps);
   dailyTasks[taskDay].sort((current,next) => current.category < next.category? -1: 1)
-  console.log(dailyTasks);
   this.reset()
   loadTasks()
 }
