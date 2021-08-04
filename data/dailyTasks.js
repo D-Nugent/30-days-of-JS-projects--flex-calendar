@@ -7,11 +7,3 @@ let dailyTasks = {
   sat:[],
   sun:[]
 }
-
-// sun:{
-//   nutrition:[],
-//   exercise:[],
-//   work:[],
-//   social:[],
-//   other:[]
-// }

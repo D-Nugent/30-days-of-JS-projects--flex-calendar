@@ -1,6 +1,5 @@
 /* HTML Resets */
 html,body, *, *::before,*::after {
-  /* font-family: 'Amatic SC', cursive; */
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   box-sizing: border-box;
 }
@@ -92,8 +91,6 @@ body {
   position: relative;
   transition: all .4s ease-in-out;
   transform: translateX(0) translateY(0);
-  /* bottom: 4px; */
-  /* right: 4px; */
   background-color: rgba(255,255,255,.25);
 }
 
@@ -135,8 +132,6 @@ body {
 .new-task{
   width: 100%;
   max-width: 400px;
-  /* border: var(--theme-border); */
-  /* margin: 20% 0%; */
 }
 
 .new-task__label {
