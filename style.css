@@ -1,0 +1,242 @@
+/* HTML Resets */
+html,body, *, *::before,*::after {
+  /* font-family: 'Amatic SC', cursive; */
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0
+}
+
+body {
+  height: 100vh;
+}
+
+/* CSS Variables */
+
+:root {
+  --color-exercise: lightsteelblue;
+  --color-nutrition: lightseagreen;
+  --color-social: lightgoldenrodyellow;
+  --color-work: lightcoral;
+  --color-other: gainsboro;
+  --theme-border: 4px solid black;
+}
+
+/* Top-level component styling */
+.calendar {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+}
+
+.day {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11), background 0.2s;
+  box-shadow: inset 0 0 0 5px rgba(255,255,255,0.1);
+  background-size: cover;
+  background-position: center;
+}
+
+.day:hover{
+  cursor: pointer;
+}
+
+.day:hover .weekday__text{
+  transform: translateX(4px) translateY(4px);
+  box-shadow: none;
+}
+
+.day.--active{
+  flex: 7;
+}
+
+.day__mon{background-image: url('https://source.unsplash.com/1600x900/?mountain')}
+.day__mon.--active{background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('https://source.unsplash.com/1600x900/?mountain')}
+.day__tue{background-image: url('https://source.unsplash.com/1600x900/?lake')}
+.day__tue.--active{background-image:  linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('https://source.unsplash.com/1600x900/?lake')}
+.day__wed{background-image: url('https://source.unsplash.com/1600x900/?nature')}
+.day__wed.--active{background-image:  linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('https://source.unsplash.com/1600x900/?nature')}
+.day__thu{background-image: url('https://source.unsplash.com/1600x900/?fun')}
+.day__thu.--active{background-image:  linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('https://source.unsplash.com/1600x900/?fun')}
+.day__fri{background-image: url('https://source.unsplash.com/1600x900/?sport')}
+.day__fri.--active{background-image:  linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('https://source.unsplash.com/1600x900/?sport')}
+.day__sat{background-image: url('https://source.unsplash.com/1600x900/?explore')}
+.day__sat.--active{background-image:  linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('https://source.unsplash.com/1600x900/?explore')}
+.day__sun{background-image: url('https://source.unsplash.com/1600x900/?relax')}
+.day__sun.--active{background-image:  linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('https://source.unsplash.com/1600x900/?relax')}
+
+.day > * {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 auto;
+  transition: transform 0.5s;
+}
+
+.weekday__text {
+  border: var(--theme-border);
+  color: black;
+  text-shadow: 4px 4px 8px whitesmoke;
+  padding: 3% 8%;
+  box-shadow: 4px 4px 8px whitesmoke;
+  position: relative;
+  transition: all .4s ease-in-out;
+  transform: translateX(0) translateY(0);
+  /* bottom: 4px; */
+  /* right: 4px; */
+  background-color: rgba(255,255,255,.25);
+}
+
+.day > *:first-child {
+  transform: translateY(-100%);
+}
+
+.day.--open-active *:first-child {
+  transform: translateY(0);
+}
+
+.day > *:last-child {
+  transform: translateY(100%);
+}
+
+.day.--open-active *:last-child {
+  transform: translateY(0);
+}
+
+/* Alternate option if you want the children themselves to have their class adjusted */
+/* .tasks {
+  transform: translateY(-12550%);
+}
+
+.tasks.--active{
+  transform: translateY(0);
+}
+
+.new-task {
+  transform: translateY(100%);
+}
+
+.new-task.--active {
+  transform: translateY(0);
+} */
+
+/* New Task Styling */
+
+.new-task{
+  width: 100%;
+  max-width: 400px;
+  /* border: var(--theme-border); */
+  /* margin: 20% 0%; */
+}
+
+.new-task__label {
+  font-weight: 800;
+  width: 90%;
+}
+
+.new-task__field{
+  width: 100%;
+  padding: 0 2%;
+  outline: none;
+  border: none;
+  background-color: rgba(255,255,255,.5);
+}
+
+.new-task__field:focus{
+  border-bottom: 2px solid black;
+}
+
+.new-task__btns{
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin-top: 2%;
+}
+
+.new-task__btns button{
+  border: var(--theme-border);
+  border-width: 2px;
+  width: 48%;
+  background-color: rgba(255,255,255,.25);
+}
+
+.new-task__btns button:hover{
+  cursor: pointer;
+  font-weight: 800;
+}
+
+/* Daily Tasks Styling */
+
+.tasks__container {
+  background-color: rgba(255,255,255,.25);
+  padding: 0;
+  border-radius: 8px;
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 500px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.task {
+  list-style: none;
+  color: black;
+  font-weight: 400;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1% 2%;
+  font-size: .8125rem;
+  width: 100%;
+}
+
+.task__category{
+  padding: .5% 1.8%;
+  border-radius: 8px;
+  width: 70px;
+  font-size: .8125rem;
+}
+
+.task__category.--exercise{
+  background-color: var(--color-exercise);
+}
+
+.task__category.--nutrition{
+  background-color: var(--color-nutrition);
+}
+
+.task__category.--social{
+  background-color: var(--color-social);
+}
+
+.task__category.--work{
+  background-color: var(--color-work);
+}
+
+.task__category.--other{
+  background-color: var(--color-other);
+}
+
+.task__desc{
+  margin: 0 4%;
+}
+
+.task__remove{
+  margin: 0;
+  padding: 1%;
+}
